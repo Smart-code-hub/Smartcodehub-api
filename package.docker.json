@@ -1,0 +1,14 @@
+{ "build:image": "docker build --build-arg SSH_KEY=$key -t smartcodehubapi-prod .",
+    "dbuild": "npm run generate-key && npm run build-image",
+    "generate-key": "key = $(cat ~/.ssh/id_rsa | base64)",
+    "clean": "rm -rf node_modules/ package-lock.json ",
+    "test": "jest",
+    "dev": "nodemon app.js",
+    "dev-start": "SSH_KEY=$(cat ~/.ssh/id_rsa | base64)  docker-compose up",
+    "load:image":"docker load < smartcodehubapi-prod.tar.gz",
+    "save:image":"docker save smartcodehubapi-prod | gzip > dist/smartcodehubapi-prod.tar.gz",
+    "create:image":"npm run build:image && npm run save:image",
+    "deploy:image":"npm run clean:container &&  npm run load:image && npm run start:container",
+    "clean:container":"docker stop smartcodehubapi-prod || true && docker rm smartcodehubapi-prod || true",
+    "start:container":"docker run  -d --name smartcodehubapi-prod  -p 3666:3666/tcp smartcodehubapi-prod"
+}

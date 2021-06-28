@@ -1,0 +1,52 @@
+{
+  "name": "smartcodehub-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build:image": "SSH_KEY=$(cat ~/.ssh/id_rsa | base64) docker build --build-arg SSH_KEY=$key -t smartcodehub/smartcodehubapi-prod .",
+    "dbuild": "npm run generate-key && npm run build-image",
+    "generate-key": "key=$(cat ~/.ssh/id_rsa | base64)",
+    "clean": "rm -rf node_modules/ package-lock.json ",
+    "build": "webpack",
+    "start": "node app.js",
+    "clean:container":"docker stop smartcodehubapi-prod || true && docker rm smartcodehubapi-prod || true",
+    "start:container":"docker run  -d --name smartcodehubapi-prod  -p 3666:3666/tcp smartcodehubapi-prod"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
+    "@sendgrid/mail": "^6.5.5",
+    "axios": "^0.19.2",
+    "bcrypt": "4.0.1",
+    "cors": "2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "googleapis": "^48.0.0",
+    "jsonwebtoken": "8.5.1",
+    "lodash": "4.17.15",
+    "moment": "^2.24.0",
+    "mongoose": "^5.9.6",
+    "multer": "1.4.2",
+    "smart-code-generator-library": "https://oauth2:677138f6a916eac5567178aa509ee986f31f453b@github.com/smartcodehubnext/smart-code-generator-library.git",
+    "smart-slack-notifier": "https://oauth2:677138f6a916eac5567178aa509ee986f31f453b@github.com/smartcodehubnext/smart-slack-notifier.git"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.9.0",
+    "nodemon": "2.0.2",
+    "@babel/plugin-transform-runtime": "^7.9.0",
+    "@babel/preset-env": "^7.9.0",
+    "babel-loader": "^8.1.0",
+    "check-outdated": "^1.4.3",
+    "html-loader": "^1.0.0",
+    "html-webpack-plugin": "^4.0.3",
+    "mocha": "^7.1.1",
+    "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-middleware": "^3.7.2",
+    "webpack-dev-server": "^3.10.3",
+    "webpack-hot-middleware": "^2.25.0",
+    "webpack-node-externals": "^1.7.2"
+  }
+}

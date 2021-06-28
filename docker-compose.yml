@@ -1,0 +1,21 @@
+version: '3.5'
+services: 
+    smartcodehubapi:
+        image : smartcodehubapi
+        command: npm run dev
+        build:
+          context: .
+          dockerfile: Dockerfile
+          args:
+            - SSH_KEY
+        networks: 
+            - backend
+        volumes:
+           - .:/smartcodehubapi
+           - /smartcodehubapi/node_modules
+        working_dir: /smartcodehubapi/  
+        ports:
+            - 3666:3666
+networks:
+  backend:
+    driver: bridge
