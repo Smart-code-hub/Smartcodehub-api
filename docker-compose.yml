@@ -14,4 +14,4 @@ services:
     container_name: mongo
     image: mongo
     ports:
-      - "27017:27017"
+      - "27018:27017"

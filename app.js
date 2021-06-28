@@ -13,7 +13,7 @@ const entityrouters = require("./routes/entities.route");
 const DBNAME = "smartcodehub"; //change it to your db name
 const port = process.env.port || 3666;
 require("dotenv").config();
-const connectionString = process.env.DB_URL || `mongodb://mongo:27017/Smartcodehub`;
+const connectionString = process.env.DB_URL || `mongodb://mongo:27018/Smartcodehub`;
 mongoose
   .connect(connectionString, {
     useNewUrlParser: true,
