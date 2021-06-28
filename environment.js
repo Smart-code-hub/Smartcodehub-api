@@ -1,6 +1,6 @@
 const environment = {
   production: false,
-  secret: "thisismystring"
+  secret: "SECRET_KEY"
 };
 
 module.exports = { environment };

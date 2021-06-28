@@ -10,8 +10,8 @@
     "clean": "rm -rf node_modules/ package-lock.json ",
     "build": "webpack",
     "start": "node app.js",
-    "clean:container":"docker stop smartcodehubapi-prod || true && docker rm smartcodehubapi-prod || true",
-    "start:container":"docker run  -d --name smartcodehubapi-prod  -p 3666:3666/tcp smartcodehubapi-prod"
+    "clean:container": "docker stop smartcodehubapi-prod || true && docker rm smartcodehubapi-prod || true",
+    "start:container": "docker run  -d --name smartcodehubapi-prod  -p 3666:3666/tcp smartcodehubapi-prod"
   },
   "author": "",
   "license": "ISC",
@@ -29,7 +29,7 @@
     "moment": "^2.24.0",
     "mongoose": "^5.9.6",
     "multer": "1.4.2",
-    "smart-code-generator-library": "https://oauth2:677138f6a916eac5567178aa509ee986f31f453b@github.com/smartcodehubnext/smart-code-generator-library.git"
+    "smart-code-generator-library": "https://github.com/Smart-code-hub/smart-code-generator-library.git"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
